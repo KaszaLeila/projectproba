@@ -7,12 +7,6 @@ package.name = simplekivyapp
 package.domain = org.test
 
 # (forrás fájlok és könyvtárak)
-source.include_exts = py,kv
-
-# (könyvtárak és fájlok, amelyek nélkül a Buildozer nem foglalkozik)
-source.include_exts = py,png,jpg,kv,atlas
-
-# (kiválasztott könyvtárak)
 source.include_exts = py,png,jpg,kv,atlas
 
 # (engedélyek a kamera használatához)
