@@ -1,34 +1,46 @@
 [app]
 
-# (alkalmazás neve)
+# Alkalmazás neve
+title = SimpleKivyApp
+
+# Csomag neve
 package.name = simplekivyapp
 
-# (alkalmazás domain-je)
+# Alkalmazás domainje
 package.domain = org.test
 
-# (forrás fájlok és könyvtárak)
+# Forrásfájlok és könyvtárak
 source.include_exts = py,png,jpg,kv,atlas
 
-# (engedélyek a kamera használatához)
+# Az alkalmazás verziószáma
+version = 0.1
+
+# Az alkalmazás forrásának könyvtára
+source.dir = .
+
+# Az alkalmazás forrásának belépési pontja (a python fájl neve)
+source.include_exts = main.py
+
+# Engedélyek a kamera használatához
 android.permissions = INTERNET
 
-# (forrásfájl az ikonhoz)
+# Forrásfájl az ikonhoz
 source.icon.filename = icon.png
 
-# (SDL opciók)
+# SDL opciók
 android.presplash.filename = %(source.dir)s/data/presplash.png
 android.presplash.color = #000000
 android.presplash.scale = True
 
-# (Kivy által használt modulok)
+# Kivy által használt modulok
 requirements = python3,kivy
 
 [buildozer]
 
-# (kiadandó apk neve)
+# Kiadandó apk neve
 name = simplekivyapp
 
-# (kiválasztott eszköz)
+# Kiválasztott eszköz
 # hostpython3 kiválasztása a Cython fordításhoz
 # cython = use Cython during compilation
 # kivy = the Kivy version to use
@@ -46,5 +58,5 @@ name = simplekivyapp
 #       (always uses python2)
 
 # p4a.source_dir = /path/to/your/p4a/sources
-# (egyéb könyvtárak és fájlok)
+# Egyéb könyvtárak és fájlok
 include_exts = py,png,jpg,kv,atlas
