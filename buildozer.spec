@@ -19,7 +19,7 @@ version = 0.1
 source.dir = .
 
 # Az alkalmazás forrásának belépési pontja (a python fájl neve)
-source.include_exts = main.py
+source.python_filename = main.py
 
 # Engedélyek a kamera használatához
 android.permissions = INTERNET
