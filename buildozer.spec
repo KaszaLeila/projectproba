@@ -57,6 +57,6 @@ name = simplekivyapp
 # ios = add platform here if you use ios and need specific requirements
 #       (always uses python2)
 
-# p4a.source_dir = /path/to/your/p4a/sources
+# p4a.source_dir = /path/to/your/p4a/source
 # Egyéb könyvtárak és fájlok
 include_exts = py,png,jpg,kv,atlas
