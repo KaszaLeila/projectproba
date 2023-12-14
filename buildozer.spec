@@ -13,12 +13,8 @@ source.include_exts = py,png,jpg,kv,atlas
 # comma separated e.g. requirements = sqlite3,kivy
 requirements = python3,kivy
 
-# (str) Custom source folders for requirements
-source.include_exts = py,png,jpg,kv,atlas
-
 # (str) Application entry point (full path)
 # main.py hanyattesve, a forráskód helyén található
-source.include_exts = py,png,jpg,kv,atlas
 source.include_exts = py,png,jpg,kv,atlas
 
 # (list) Garden requirements (https://github.com/kivy-garden)
