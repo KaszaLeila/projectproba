@@ -1,59 +1,26 @@
-name: CI
+# (kivy_venv) $ buildozer init
 
-on:
-  push:
-    branches: [main]
+[app]
 
-jobs:
-  build:
-    runs-on: ubuntu-20.04
+# (Add other configurations as needed)
 
-    steps:
-      - name: Install Buildozer Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cython
-          pip install --upgrade buildozer
-        env:
-          BUILDOZER_VERSION: stable
+# (list) Application requirements
+requirements = python3,kivy
 
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+# (int) Android API to use
+android.api = 31
 
-      - name: Get Date
-        id: get-date
-        run: |
-          echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
-        shell: bash
+# (int) Minimum API required
+android.minapi = 21
 
-      - name: Cache Buildozer global directory
-        uses: actions/cache@v2
-        with:
-          path: .buildozer_global
-          key: buildozer-global-${{ runner.os }}-${{ github.sha }}-${{ hashFiles('buildozer.spec') }}
+# (int) Android SDK version to use
+android.sdk = 31
 
-      - name: Cache Buildozer directory
-        uses: actions/cache@v2
-        with:
-          path: .buildozer
-          key: buildozer-${{ runner.os }}-${{ github.sha }}-${{ hashFiles('buildozer.spec') }}-${{ hashFiles('path/to/other/cache/files') }}
+# (str) Android NDK version to use
+android.ndk = 23.0.7599858
 
-      - name: Build with Buildozer
-        id: buildozer
-        run: buildozer android debug
-        env:
-          BUILDOZER_VERSION: stable
+# (list) Android Gradle dependencies
+android.gradle_dependencies = com.android.tools.build:gradle:3.6.0
 
-      - name: Verify Buildozer Output
-        run: |
-          ls -la ./bin
-          if [ ! -f ./bin/YourApp-0.1-armeabi-v7a-debug.apk ]; then
-            echo "Buildozer output file not found!"
-            exit 1
-          fi
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: package
-          path: ./bin/YourApp-0.1-armeabi-v7a-debug.apk
+# (bool) Automatically accept SDK licenses
+android.accept_sdk_license = True
