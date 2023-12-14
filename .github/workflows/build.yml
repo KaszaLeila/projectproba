@@ -1,26 +1,95 @@
-# (kivy_venv) $ buildozer init
+Skip to content
+KaszaLeila
+/
+projectproba
 
-[app]
+Type / to search
 
-# (Add other configurations as needed)
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+Commit
+Update build.yml
+ main
+@KaszaLeila
+KaszaLeila committed 6 minutes ago 
+1 parent 509fcd6
+commit 8b60c28
+Showing 1 changed file with 3 additions and 1 deletion.
+ 4 changes: 3 additions & 1 deletion4  
+.github/workflows/build.yml
+@@ -1,16 +1,18 @@
+name: CI
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-20.04
 
-# (list) Application requirements
-requirements = python3,kivy
-
-# (int) Android API to use
-android.api = 31
-
-# (int) Minimum API required
-android.minapi = 21
-
-# (int) Android SDK version to use
-android.sdk = 31
-
-# (str) Android NDK version to use
-android.ndk = 23.0.7599858
-
-# (list) Android Gradle dependencies
-android.gradle_dependencies = com.android.tools.build:gradle:3.6.0
-
-# (bool) Automatically accept SDK licenses
-android.accept_sdk_license = True
+    steps:
+      - name: Install Buildozer
+      - name: Install Buildozer Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cython
+          pip install --upgrade buildozer
+        env:
+          BUILDOZER_VERSION: stable
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Get Date
+        id: get-date
+        run: |
+          echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+        shell: bash
+      - name: Cache Buildozer global directory
+        uses: actions/cache@v2
+        with:
+          path: .buildozer_global
+          key: buildozer-global-${{ runner.os }}-${{ github.sha }}-${{ hashFiles('buildozer.spec') }}
+      - name: Cache Buildozer directory
+        uses: actions/cache@v2
+        with:
+          path: .buildozer
+          key: buildozer-${{ runner.os }}-${{ github.sha }}-${{ hashFiles('buildozer.spec') }}-${{ hashFiles('path/to/other/cache/files') }}
+      - name: Build with Buildozer
+        id: buildozer
+        run: buildozer android debug
+        env:
+          BUILDOZER_VERSION: stable
+      - name: Verify Buildozer Output
+        run: |
+          ls -la ./bin
+          if [ ! -f ./bin/YourApp-0.1-armeabi-v7a-debug.apk ]; then
+            echo "Buildozer output file not found!"
+            exit 1
+          fi
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: package
+          path: ./bin/YourApp-0.1-armeabi-v7a-debug.apk
+0 comments on commit 8b60c28
+@KaszaLeila
+Comment
+ 
+Leave a comment
+ 
+ You’re receiving notifications because you’re watching this repository.
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact
+Manage cookiesDo not share my personal informationUpdate build.yml · KaszaLeila/projectproba@8b60c28 
