@@ -1,62 +1,26 @@
+# (kivy_venv) $ buildozer init
+
 [app]
 
-# Alkalmazás neve
-title = SimpleKivyApp
+# (Add other configurations as needed)
 
-# Csomag neve
-package.name = simplekivyapp
-
-# Alkalmazás domainje
-package.domain = org.test
-
-# Forrásfájlok és könyvtárak
-source.include_exts = py,png,jpg,kv,atlas
-
-# Az alkalmazás verziószáma
-version = 0.1
-
-# Az alkalmazás forrásának könyvtára
-source.dir = .
-
-# Az alkalmazás forrásának belépési pontja (a python fájl neve)
-source.python_filename = main.py
-
-# Engedélyek a kamera használatához
-android.permissions = INTERNET
-
-# Forrásfájl az ikonhoz
-source.icon.filename = icon.png
-
-# SDL opciók
-android.presplash.filename = %(source.dir)s/data/presplash.png
-android.presplash.color = #000000
-android.presplash.scale = True
-
-# Kivy által használt modulok
+# (list) Application requirements
 requirements = python3,kivy
 
-[buildozer]
+# (int) Android API to use
+android.api = 31
 
-# Kiadandó apk neve
-name = simplekivyapp
+# (int) Minimum API required
+android.minapi = 21
 
-# Kiválasztott eszköz
-# hostpython3 kiválasztása a Cython fordításhoz
-# cython = use Cython during compilation
-# kivy = the Kivy version to use
-# openssl = use a custom openssl version
-# sqlite3 = use a custom sqlite3 version
-# sdl2_image = use a custom sdl2_image version
-# sdl2_mixer = use a custom sdl2_mixer version
-# sdl2_ttf = use a custom sdl2_ttf version
-# pygame = use a custom pygame version
-# pyjnius = use a custom pyjnius version
-# android = add platform here if you use android and need specific
-#       requirements (recommended to not use anything else than
-#       python2 or python3 android p4a)
-# ios = add platform here if you use ios and need specific requirements
-#       (always uses python2)
+# (int) Android SDK version to use
+android.sdk = 31
 
-# p4a.source_dir = /path/to/your/p4a/sources
-# Egyéb könyvtárak és fájlok
-include_exts = py,png,jpg,kv,atlas
+# (str) Android NDK version to use
+android.ndk = 23.0.7599858
+
+# (list) Android Gradle dependencies
+android.gradle_dependencies = com.android.tools.build:gradle:3.6.0
+
+# (bool) Automatically accept SDK licenses
+android.accept_sdk_license = True
