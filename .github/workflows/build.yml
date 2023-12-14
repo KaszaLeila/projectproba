@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+      - name: Install Buildozer
+        run: |
+          pip install --upgrade buildozer
+        env:
+          BUILDOZER_VERSION: stable
+
       - name: Checkout Repository
         uses: actions/checkout@v2
 
