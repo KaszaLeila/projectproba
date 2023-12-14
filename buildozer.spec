@@ -11,7 +11,7 @@ source.include_exts = py,png,jpg,kv,atlas
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy
+requirements = kivy
 
 # (str) Application entry point (full path)
 # main.py hanyattesve, a forráskód helyén található
