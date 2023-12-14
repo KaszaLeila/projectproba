@@ -1,30 +1,4 @@
-Skip to content
-KaszaLeila
-/
-projectproba
 
-Type / to search
-
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Commit
-Update build.yml
- main
-@KaszaLeila
-KaszaLeila committed 6 minutes ago 
-1 parent 509fcd6
-commit 8b60c28
-Showing 1 changed file with 3 additions and 1 deletion.
- 4 changes: 3 additions & 1 deletion4  
-.github/workflows/build.yml
-@@ -1,16 +1,18 @@
 name: CI
 on:
   push:
@@ -76,20 +50,3 @@ jobs:
         with:
           name: package
           path: ./bin/YourApp-0.1-armeabi-v7a-debug.apk
-0 comments on commit 8b60c28
-@KaszaLeila
-Comment
- 
-Leave a comment
- 
- You’re receiving notifications because you’re watching this repository.
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact
-Manage cookiesDo not share my personal informationUpdate build.yml · KaszaLeila/projectproba@8b60c28 
