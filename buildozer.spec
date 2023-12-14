@@ -1,58 +1,56 @@
 [app]
 
-# Title of your application
-title = Speech Emotion Recognition
+# (alkalmazás neve)
+package.name = simplekivyapp
 
-# Package name
-package.name = speechemotionrecognition
-
-# Package domain
+# (alkalmazás domain-je)
 package.domain = org.test
 
-# Source code directory
-source.dir = .
+# (forrás fájlok és könyvtárak)
+source.include_exts = py,kv
 
-# Source files to include
+# (könyvtárak és fájlok, amelyek nélkül a Buildozer nem foglalkozik)
 source.include_exts = py,png,jpg,kv,atlas
 
-# Application version
-version = 0.1
-osx.kivy_version = 2.1.0
+# (kiválasztott könyvtárak)
+source.include_exts = py,png,jpg,kv,atlas
 
-# Application requirements
-requirements = python3==3.7.6,hostpython3==3.7.6, kivy, pillow, https://github.com/kivy/python-for-android/archive/master.zip, pyaudio==0.2.15
+# (engedélyek a kamera használatához)
+android.permissions = INTERNET
 
+# (forrásfájl az ikonhoz)
+source.icon.filename = icon.png
 
-# Supported orientations
-orientation = portrait
+# (SDL opciók)
+android.presplash.filename = %(source.dir)s/data/presplash.png
+android.presplash.color = #000000
+android.presplash.scale = True
 
-
-osx.python_version = 3.7.6
-
-
-
-# Android specific settings
-fullscreen = 0
-android.archs = arm64-v8a, armeabi-v7a
-android.api = 31
-android.minapi = 21
-# android.sdk = 31
-android.ndk = 25b
-android.ndk_version = 21.3.6528147
-android.ndk_api = 21
-
-# Permissions
-android.permissions = RECORD_AUDIO,WRITE_EXTERNAL_STORAGE
-
-# Python for android (p4a) settings
-p4a.branch = master
-p4a.source_dir =
-p4a.local_recipes =
+# (Kivy által használt modulok)
+requirements = python3,kivy
 
 [buildozer]
-buildozer.version = 1.2.0
-# Log level
-log_level = 2
 
-# Display warning if run as root
-warn_on_root = 1
+# (kiadandó apk neve)
+name = simplekivyapp
+
+# (kiválasztott eszköz)
+# hostpython3 kiválasztása a Cython fordításhoz
+# cython = use Cython during compilation
+# kivy = the Kivy version to use
+# openssl = use a custom openssl version
+# sqlite3 = use a custom sqlite3 version
+# sdl2_image = use a custom sdl2_image version
+# sdl2_mixer = use a custom sdl2_mixer version
+# sdl2_ttf = use a custom sdl2_ttf version
+# pygame = use a custom pygame version
+# pyjnius = use a custom pyjnius version
+# android = add platform here if you use android and need specific
+#       requirements (recommended to not use anything else than
+#       python2 or python3 android p4a)
+# ios = add platform here if you use ios and need specific requirements
+#       (always uses python2)
+
+# p4a.source_dir = /path/to/your/p4a/sources
+# (egyéb könyvtárak és fájlok)
+include_exts = py,png,jpg,kv,atlas
