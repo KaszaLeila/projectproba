@@ -1,52 +1,26 @@
-
 name: CI
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Install Buildozer
-      - name: Install Buildozer Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cython
-          pip install --upgrade buildozer
-        env:
-          BUILDOZER_VERSION: stable
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v2
-      - name: Get Date
-        id: get-date
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
         run: |
-          echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
-        shell: bash
-      - name: Cache Buildozer global directory
-        uses: actions/cache@v2
-        with:
-          path: .buildozer_global
-          key: buildozer-global-${{ runner.os }}-${{ github.sha }}-${{ hashFiles('buildozer.spec') }}
-      - name: Cache Buildozer directory
-        uses: actions/cache@v2
-        with:
-          path: .buildozer
-          key: buildozer-${{ runner.os }}-${{ github.sha }}-${{ hashFiles('buildozer.spec') }}-${{ hashFiles('path/to/other/cache/files') }}
-      - name: Build with Buildozer
-        id: buildozer
-        run: buildozer android debug
-        env:
-          BUILDOZER_VERSION: stable
-      - name: Verify Buildozer Output
+          pip install -r requirements.txt
+
+      - name: Run tests
         run: |
-          ls -la ./bin
-          if [ ! -f ./bin/YourApp-0.1-armeabi-v7a-debug.apk ]; then
-            echo "Buildozer output file not found!"
-            exit 1
-          fi
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: package
-          path: ./bin/YourApp-0.1-armeabi-v7a-debug.apk
+          python tests.py
